@@ -10,9 +10,10 @@
 
 **1ASI0728 — Arquitecturas de Software Emergentes**
 
-**Sección:** `<código de sección>`
+**Sección:** 9075 </p>
 
-**Profesor:** `<Nombre del profesor>`
+**Profesor:**  Wilder Aurelio Vega Calero</p>
+
 
 <br>
 
@@ -48,11 +49,8 @@
 
 | Versión | Fecha | Autor | Descripción de modificación |
 |---------|-------|-------|-----------------------------|
-| 1.0 | `<YYYY-MM-DD>` | `<Autor>` | Versión inicial del informe: carátula, estructura de contenido y Capítulos I–IV (entrega TB1). |
-| 1.1 | `<YYYY-MM-DD>` | `<Autor>` | `<Correcciones por retroalimentación del docente / autocrítica del equipo>` |
-| 2.0 | `<YYYY-MM-DD>` | `<Autor>` | `<Adición de Capítulo V y VI (entrega TP1)>` |
-| 3.0 | `<YYYY-MM-DD>` | `<Autor>` | `<Adición de Capítulo VII, Sprint 1 (entrega TB2)>` |
-| 4.0 | `<YYYY-MM-DD>` | `<Autor>` | `<Versión final: Sprint 2, conclusiones, bibliografía y anexos (entrega TF1)>` |
+| TB1 | 19/09/2026 | Gonza Morales, Anderson; Guerrero Tomas, Nelson; Gutierrez Tume, Stanley  Jeremy ;Tasayco Almonacid, Rafael Augusto; Andy Alejandro Mio Mejia |Se elaboró la primera versión del informe del Trabajo Final de Triple B para el curso de Arquitecturas de Software Emergentes., actualizando la carátula, el registro de versiones, el Student Outcome (SO3) y los Capítulos I, II y III para reflejar el nuevo nombre del producto y la incorporación de la Inteligencia Artificial como componente emergente central: el Agente IA autónomo que actúa como intermediario entre estudiantes y empleadores. Se añadió el Epic EP13 (Agente IA Autónomo) con las User Stories US51–US56. Se desarrolló íntegramente el nuevo Capítulo IV (Strategic-Level Software Design), incluyendo las secciones de Strategic-Level Attribute-Driven Design, Strategic-Level Domain-Driven Design (EventStorming, Candidate Contexts, Domain Message Flows, Bounded Context Canvases, Context Mapping) y Software Architecture (System Landscape, Context Level, Container Level y Deployment Diagrams). |
+| TP | 09/10/2026 | Gonza Morales, Anderson; Guerrero Tomas, Nelson; Gutierrez Tume, Stanley  Jeremy ;Tasayco Almonacid, Rafael Augusto; Andy Alejandro Mio Mejia |Se corrigió los errores que nos mencionó el docente , posterior a las correcciones se elaboraron los capítulos 5 y 6 para esta entrega parcial|
 
 > Registrar como modificación relevante: adición o eliminación de secciones, y correcciones o mejoras por feedback del docente o autocrítica del equipo. Debe ser coherente con *Project Report Collaboration Insights*.
 
@@ -60,25 +58,9 @@
 
 # Project Report Collaboration Insights
 
-- **Repositorio del informe (organización GitHub):** `<URL>`
+- **Repositorio del informe (organización GitHub):** [`<URL>`](https://github.com/1ASI0728-2620-9075-Chambita/1ASI0728-2620-9075-TF-Report)
 - **Flujo de trabajo:** GitFlow + Conventional Commits.
 
-## TB1
-`<Explicación de cómo se elaboró el informe: reparto de capítulos, reuniones, revisiones.>`
-
-| Evidencia | Captura |
-|-----------|---------|
-| Contributors / Insights del repositorio | `![](img/colaboracion/tb1-insights.png)` |
-| Historial de commits por integrante | `![](img/colaboracion/tb1-commits.png)` |
-
-## TP1
-`<Por completar>`
-
-## TB2
-`<Por completar>`
-
-## TF1
-`<Por completar>`
 
 <div style="page-break-after: always;"></div>
 
@@ -295,8 +277,8 @@ En el siguiente cuadro se describe las acciones realizadas y enunciados de concl
 
 | Criterio específico | Acciones realizadas | Conclusiones |
 |---------------------|---------------------|--------------|
-| Comunica oralmente sus ideas y/o resultados con objetividad a público de diferentes especialidades y niveles jerárquicos, en el marco del desarrollo de un proyecto en ingeniería. | **`<Integrante 1>`**<br>TB1: …<br>TP1: …<br>TB2: …<br>TF1: …<br>**`<Integrante 2>`**<br>TB1: … | `<Conclusión grupal acumulable>` |
-| Comunica en forma escrita ideas y/o resultados con objetividad a público de diferentes especialidades y niveles jerárquicos, en el marco del desarrollo de un proyecto en ingeniería. | **`<Integrante 1>`**<br>TB1: …<br>TP1: …<br>TB2: …<br>TF1: …<br>**`<Integrante 2>`**<br>TB1: … | `<Conclusión grupal acumulable>` |
+| Comunica oralmente sus ideas y/o resultados con objetividad a público de diferentes especialidades y niveles jerárquicos, en el marco del desarrollo de un proyecto en ingeniería. |  **Gonza Morales, Anderson**<br>**AV1:** Elaboré la adaptación del informe al nuevo curso de Arquitecturas de Software Emergentes, reescribiendo los Capítulos I, II y III para explicar la incorporación del Agente IA autónomo a un público con conocimiento de ingeniería de software. Redacté además el nuevo Capítulo IV (Strategic-Level Software Design), comunicando decisiones arquitectónicas como bounded contexts, ADD, DDD y diagramas C4 de forma clara y estructurada.<br><br>**Guerrero Tomas, Nelson**<br>**AV1:** Contribuí al desarrollo del Lean UX Process, las User Stories del Agente IA (US51–US56) y los artefactos del Capítulo III, redactando los requisitos funcionales del nuevo Epic EP13 en lenguaje accesible tanto para el equipo técnico como para perfiles de negocio.<br><br>**Gutierrez Tume, Stanley Jeremy**<br>**AV1:** Diseñé y estructuré la documentación base del informe (Carátula, Registro de Versiones, Tabla de Contenido y Student Outcome), estableciendo una organización clara y navegable que sirve como columna vertebral del proyecto. Asimismo, lideré la redacción del diseño y análisis de entrevistas, así como los artefactos de Needfinding (User Personas, Empathy Mapping y As-is Scenario Mapping) del Capítulo II, traduciendo los hallazgos cualitativos de los dos segmentos objetivo en información accionable para el diseño de la solución. | En AV1, el equipo demostró capacidad de comunicación escrita al adaptar el informe a un nuevo contexto académico y tecnológico. Se reescribieron secciones de análisis, especificación y diseño arquitectónico de forma clara y trazable, conectando la problemática del negocio con decisiones técnicas concretas mediante lenguaje accesible para distintas audiencias. |
+| Comunica en forma escrita ideas y/o resultados con objetividad a público de diferentes especialidades y niveles jerárquicos, en el marco del desarrollo de un proyecto en ingeniería. | **Gonza Morales, Anderson**<br>**AV1:** Expliqué las decisiones de diseño del nuevo Capítulo IV a mis compañeros de equipo, presentando la nueva estructura de bounded contexts, el rol del Agente IA autónomo y el impacto en la arquitectura del sistema de forma comprensible para distintos perfiles del equipo.<br><br>**Guerrero Tomas, Nelson**<br>**AV1:** Participé en las discusiones de equipo para validar los nuevos User Stories y el flujo del Agente IA, explicando el impacto funcional de cada escenario de forma accesible para perfiles con distintos niveles de experiencia técnica.<br><br>**Gutierrez Tume, Stanley Jeremy**<br>**AV1:** Comuniqué al equipo la arquitectura de colaboración del proyecto, asegurando que todos los integrantes comprendieran el flujo de contribución. De igual manera, presenté los hallazgos obtenidos en las entrevistas a los segmentos objetivo, facilitando la discusión del equipo sobre cómo estos insights debían traducirse en los artefactos de Needfinding del Capítulo II. | En AV1, el equipo evidenció comunicación oral efectiva al coordinar la adaptación del informe y la incorporación de la IA. Las discusiones permitieron alinear criterios entre integrantes con distintos perfiles y garantizar que las decisiones arquitectónicas fueran comprensibles para el conjunto del equipo antes de ser documentadas. |
 
 <div style="page-break-after: always;"></div>
 
@@ -327,10 +309,10 @@ Por cada integrante: foto, nombres y apellidos, código de estudiante, descripci
 
 | Foto | Nombres y apellidos | Código | Carrera | Conocimientos y habilidades |
 |------|---------------------|--------|---------|-----------------------------|
-| `<Foto pendiente>` | Gonza Morales, Anderson | U202120836 | Ingeniería de Software | Estudiante de Ingeniería de Software. Destaca por su capacidad de liderazgo y organización en equipos de trabajo. Tiene conocimientos en Python, Java, HTML, CSS, MySQL, análisis de datos y arquitectura de software, así como en el seguimiento de actividades orientadas a cumplir los objetivos del proyecto. |
+|  <img src="imgs/Foto_Anderson.jpg" alt="Anderson Gonza Morales" width="150" /><br | Gonza Morales, Anderson | U202120836 | Ingeniería de Software | Estudiante de Ingeniería de Software. Destaca por su capacidad de liderazgo y organización en equipos de trabajo. Tiene conocimientos en Python, Java, HTML, CSS, MySQL, análisis de datos y arquitectura de software, así como en el seguimiento de actividades orientadas a cumplir los objetivos del proyecto. |
 | `<Foto pendiente>` | Guerrero Tomas, Nelson | U202222745 | Ingeniería de Software | Estudiante de Ingeniería de Software en la UPC, con enfoque en el análisis de requisitos, la especificación de User Stories y el modelado de negocio. Le interesan la automatización de procesos con IA y el diseño de productos centrados en el usuario. Aporta habilidades en Lean UX, needfinding, gestión del Product Backlog y comunicación de ideas técnicas a audiencias diversas. |
-| `<Foto pendiente>` | Gutierrez Tume, Stanley Jeremy | U202118152 | Ingeniería de Software | Estudiante de Ingeniería de Software en la UPC. Cuenta con experiencia en proyectos desarrollados con C++, Python, HTML y CSS, además de conocimientos en JavaScript, TypeScript y Java. Se considera una persona responsable y comprometida, que mantiene una comunicación efectiva para el trabajo en equipo. |
-| `<Foto pendiente>` | Tasayco Almonacid, Rafael Augusto | U20231F226 | Ingeniería de Software | Estudiante de Ingeniería de Software en la UPC, actualmente en sexto ciclo. Su principal interés profesional es la ciberseguridad, área en la que desea especializarse; en el proyecto aporta criterios de protección de datos y control de accesos. |
+|  <img width="150" height="150" alt="image" src="https://github.com/user-attachments/assets/b41da0c9-5d0d-45b4-a0db-a6b29d1f5185"/><br> | Gutierrez Tume, Stanley Jeremy | U202118152 | Ingeniería de Software | Estudiante de Ingeniería de Software en la UPC. Cuenta con experiencia en proyectos desarrollados con C++, Python, HTML y CSS, además de conocimientos en JavaScript, TypeScript y Java. Se considera una persona responsable y comprometida, que mantiene una comunicación efectiva para el trabajo en equipo. |
+| <img src="imgs/Rafael-Tasayco.png" alt="Rafael Augusto Tasayco Almonacid" width="150" /><br> | Tasayco Almonacid, Rafael Augusto | U20231F226 | Ingeniería de Software | Estudiante de Ingeniería de Software en la UPC, actualmente en sexto ciclo. Su principal interés profesional es la ciberseguridad, área en la que desea especializarse; en el proyecto aporta criterios de protección de datos y control de accesos. |
 | `<Foto pendiente>` | Mio Mejia, Andy Alejandro | U202218531 | Ingeniería de Software | Estudiante de Ingeniería de Software en la UPC, curioso y motivado por el aprendizaje constante. Tiene experiencia previa en especificación de requisitos (User Stories, Impact Mapping, Product Backlog y To-Be Scenario Mapping) y en Attribute-Driven Design, adquirida en el curso de Fundamentos de Arquitectura de Software. |
 
 ## 1.2. Solution Profile
