@@ -327,11 +327,11 @@ Por cada integrante: foto, nombres y apellidos, código de estudiante, descripci
 
 | Foto | Nombres y apellidos | Código | Carrera | Conocimientos y habilidades |
 |------|---------------------|--------|---------|-----------------------------|
-| `<Foto pendiente>` | Gonza Morales, Anderson | U202120836 | Ingeniería de Software | Estudiante de Ingeniería de Software. Destaca por su capacidad de liderazgo y organización en equipos de trabajo. Tiene conocimientos en Python, Java, HTML, CSS, MySQL, análisis de datos y arquitectura de software, así como en el seguimiento de actividades orientadas a cumplir los objetivos del proyecto. |
-| `<Foto pendiente>` | Guerrero Tomas, Nelson | U202222745 | Ingeniería de Software | Estudiante de Ingeniería de Software en la UPC, con enfoque en el análisis de requisitos, la especificación de User Stories y el modelado de negocio. Le interesan la automatización de procesos con IA y el diseño de productos centrados en el usuario. Aporta habilidades en Lean UX, needfinding, gestión del Product Backlog y comunicación de ideas técnicas a audiencias diversas. |
-| `<Foto pendiente>` | Gutierrez Tume, Stanley Jeremy | U202118152 | Ingeniería de Software | Estudiante de Ingeniería de Software en la UPC. Cuenta con experiencia en proyectos desarrollados con C++, Python, HTML y CSS, además de conocimientos en JavaScript, TypeScript y Java. Se considera una persona responsable y comprometida, que mantiene una comunicación efectiva para el trabajo en equipo. |
-| `<Foto pendiente>` | Tasayco Almonacid, Rafael Augusto | U20231F226 | Ingeniería de Software | Estudiante de Ingeniería de Software en la UPC, actualmente en sexto ciclo. Su principal interés profesional es la ciberseguridad, área en la que desea especializarse; en el proyecto aporta criterios de protección de datos y control de accesos. |
-| `<Foto pendiente>` | Mio Mejia, Andy Alejandro | U202218531 | Ingeniería de Software | Estudiante de Ingeniería de Software en la UPC, curioso y motivado por el aprendizaje constante. Tiene experiencia previa en especificación de requisitos (User Stories, Impact Mapping, Product Backlog y To-Be Scenario Mapping) y en Attribute-Driven Design, adquirida en el curso de Fundamentos de Arquitectura de Software. |
+| <img src="img/cap%201/team/gonza-morales-anderson.jpg" alt="Foto de Gonza Morales, Anderson" width="120"> | Gonza Morales, Anderson | U202120836 | Ingeniería de Software | Estudiante de Ingeniería de Software. Destaca por su capacidad de liderazgo y organización en equipos de trabajo. Tiene conocimientos en Python, Java, HTML, CSS, MySQL, análisis de datos y arquitectura de software, así como en el seguimiento de actividades orientadas a cumplir los objetivos del proyecto. |
+| <img src="img/cap%201/team/guerrero-tomas-nelson.jpg" alt="Foto de Guerrero Tomas, Nelson" width="120"> | Guerrero Tomas, Nelson | U202222745 | Ingeniería de Software | Estudiante de Ingeniería de Software en la UPC, con enfoque en el análisis de requisitos, la especificación de User Stories y el modelado de negocio. Le interesan la automatización de procesos con IA y el diseño de productos centrados en el usuario. Aporta habilidades en Lean UX, needfinding, gestión del Product Backlog y comunicación de ideas técnicas a audiencias diversas. |
+| <img src="img/cap%201/team/gutierrez-tume-stanley.jpg" alt="Foto de Gutierrez Tume, Stanley Jeremy" width="120"> | Gutierrez Tume, Stanley Jeremy | U202118152 | Ingeniería de Software | Estudiante de Ingeniería de Software en la UPC. Cuenta con experiencia en proyectos desarrollados con C++, Python, HTML y CSS, además de conocimientos en JavaScript, TypeScript y Java. Se considera una persona responsable y comprometida, que mantiene una comunicación efectiva para el trabajo en equipo. |
+| <img src="img/cap%201/team/tasayco-almonacid-rafael.jpg" alt="Foto de Tasayco Almonacid, Rafael Augusto" width="120"> | Tasayco Almonacid, Rafael Augusto | U20231F226 | Ingeniería de Software | Estudiante de Ingeniería de Software en la UPC, actualmente en sexto ciclo. Su principal interés profesional es la ciberseguridad, área en la que desea especializarse; en el proyecto aporta criterios de protección de datos y control de accesos. |
+| <img src="img/cap%201/team/mio-mejia-andy.jpg" alt="Foto de Mio Mejia, Andy Alejandro" width="120"> | Mio Mejia, Andy Alejandro | U202218531 | Ingeniería de Software | Estudiante de Ingeniería de Software en la UPC, curioso y motivado por el aprendizaje constante. Tiene experiencia previa en especificación de requisitos (User Stories, Impact Mapping, Product Backlog y To-Be Scenario Mapping) y en Attribute-Driven Design, adquirida en el curso de Fundamentos de Arquitectura de Software. |
 
 ## 1.2. Solution Profile
 
@@ -673,11 +673,11 @@ Cada ficha integra las características más frecuentes del análisis de entrevi
 
 **User Persona 1: Valeria Rojas (estudiante universitaria)**
 
-![User Persona: Valeria Rojas](img/cap%202/persona-valeria.png)
+![User Persona: Valeria Rojas](img/cap%202/persona-valeria-uxpressia.png)
 
 **User Persona 2: Rosa Huamán (emprendedora)**
 
-![User Persona: Rosa Huamán](img/cap%202/persona-rosa.png)
+![User Persona: Rosa Huamán](img/cap%202/persona-rosa-uxpressia.png)
 
 ### 2.3.2. User Task Matrix
 
@@ -703,9 +703,9 @@ Las tareas más frecuentes e importantes para ambas son negociar, comunicarse du
 
 El Empathy Map de cada User Persona se elabora ubicando a la persona al centro: cada integrante aporta observaciones en cada sección y luego se agrupan las ideas repetidas para identificar sus pains y gains. Los mapas también están en el [tablero de Miro del equipo](https://miro.com/app/board/uXjVEcFMHoY=/).
 
-![Empathy Map: Valeria Rojas](img/cap%202/empathy-valeria.png)
+![Empathy Map: Valeria Rojas](img/cap%202/empathy-valeria-uxpressia.png)
 
-![Empathy Map: Rosa Huamán](img/cap%202/empathy-rosa.png)
+![Empathy Map: Rosa Huamán](img/cap%202/empathy-rosa-uxpressia.png)
 
 En ambos mapas el pain central es la desconfianza: Valeria no puede probar su experiencia y Rosa no puede asegurar que recibirá lo que paga. Chambita responde a ambos con el certificado verificable y el pago protegido.
 
@@ -713,9 +713,9 @@ En ambos mapas el pain central es la desconfianza: Valeria no puede probar su ex
 
 El As-is Scenario Map de cada User Persona se construye en Miro: cada integrante propone ideas de forma individual, luego se agrupan en fases, se nombra cada fase y se marcan las áreas positivas (+), negativas (−) y las que requieren investigar más (?). Ver el [tablero de Miro del equipo](https://miro.com/app/board/uXjVEcFMHoY=/).
 
-![As-is Scenario Map: Valeria Rojas](img/cap%202/asis-valeria.png)
+![As-is Scenario Map: Valeria Rojas](img/cap%202/asis-valeria-uxpressia.png)
 
-![As-is Scenario Map: Rosa Huamán](img/cap%202/asis-rosa.png)
+![As-is Scenario Map: Rosa Huamán](img/cap%202/asis-rosa-uxpressia.png)
 
 Las áreas negativas se concentran al acordar el trabajo, al cobrar o pagar, y al demostrar la experiencia. Son los momentos que el To-Be Scenario Mapping (Capítulo III) debe transformar.
 
@@ -774,7 +774,7 @@ Los mapas también están en el [tablero de Miro del equipo](https://miro.com/ap
 
 **Valeria (estudiante)**
 
-![To-Be Scenario Map: Valeria Rojas](img/cap%203/tobe-valeria.png)
+![To-Be Scenario Map: Valeria Rojas](img/cap%203/tobe-valeria-uxpressia.png)
 
 | Fase | As-is | To-Be | Qué ofrece Chambita |
 |------|-------|-------|---------------------|
@@ -786,7 +786,7 @@ Los mapas también están en el [tablero de Miro del equipo](https://miro.com/ap
 
 **Rosa (emprendedora)**
 
-![To-Be Scenario Map: Rosa Huamán](img/cap%203/tobe-rosa.png)
+![To-Be Scenario Map: Rosa Huamán](img/cap%203/tobe-rosa-uxpressia.png)
 
 | Fase | As-is | To-Be | Qué ofrece Chambita |
 |------|-------|-------|---------------------|
@@ -886,19 +886,19 @@ El Impact Map conecta los objetivos del negocio con lo que vamos a construir. Pa
 
 **BG1 · Estudiantes verificados**
 
-![Impact Map BG1](img/cap%203/impact-map-bg1.png)
+![Impact Map BG1](img/cap%203/impact-map-bg1-uxpressia.png)
 
 **BG2 · Emprendedores que publican proyectos**
 
-![Impact Map BG2](img/cap%203/impact-map-bg2.png)
+![Impact Map BG2](img/cap%203/impact-map-bg2-uxpressia.png)
 
 **BG3 · Certificados emitidos y verificados**
 
-![Impact Map BG3](img/cap%203/impact-map-bg3.png)
+![Impact Map BG3](img/cap%203/impact-map-bg3-uxpressia.png)
 
 **BG4 · Clientes que vuelven a contratar**
 
-![Impact Map BG4](img/cap%203/impact-map-bg4.png)
+![Impact Map BG4](img/cap%203/impact-map-bg4-uxpressia.png)
 
 BG2 y BG3 concentran el núcleo del negocio: publicar, contratar, pagar y certificar. Por eso sus user stories tendrán mayor prioridad en el Product Backlog (3.4), junto con las de la landing page, que se consideran desde el primer sprint.
 
