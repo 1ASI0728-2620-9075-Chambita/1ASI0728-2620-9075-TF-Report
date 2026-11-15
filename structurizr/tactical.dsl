@@ -14,13 +14,14 @@ workspace extends workspace.dsl {
             prfCmd = component "Profile Command Services" "Crean y actualizan perfiles." "Spring Service" "Profiles"
             prfQuery = component "Profile Query Services" "Consultas de perfiles." "Spring Service" "Profiles"
             prfHandlers = component "Profile Event Handlers" "Student Verified, Client Account Registered, Rating Updated, Certificate Issued." "Spring Modulith listeners" "Profiles"
-            prfFacade = component "ProfilesContextFacade" "Elegibilidad, categorías y calificaciones para otros contextos." "Spring Component" "Profiles"
+            prfFacade = component "ProfilesContextFacade" "Elegibilidad, categorías, habilidades, calificaciones y certificados para otros contextos." "Spring Component" "Profiles"
             prfRepos = component "Profiles Repositories" "Persistencia del esquema profiles." "Spring Data JPA" "Profiles"
             prjProjectsCtrl = component "ProjectsController" "Publicación y búsqueda de proyectos." "Spring Web MVC" "Projects"
             prjProposalsCtrl = component "ProposalsController" "Envío, orden y aceptación de propuestas." "Spring Web MVC" "Projects"
             prjCmd = component "ProjectCommandServiceImpl" "Casos de uso de proyectos y propuestas." "Spring Service" "Projects"
             prjQuery = component "ProjectQueryServiceImpl" "Búsqueda de proyectos y orden de propuestas." "Spring Service" "Projects"
             prjProfilesAcl = component "ExternalProfilesService (Projects)" "ACL hacia Profiles." "Spring Component" "Projects"
+            prjFacade = component "ProjectsContextFacade" "Proyecto, propuesta y dueño del proyecto para Assistance." "Spring Component" "Projects"
             prjRepos = component "JpaProjectRepository" "Persistencia del esquema projects." "Spring Data JPA" "Projects"
             engCtrl = component "EngagementsController" "Avances, entregas, aprobación y disputas." "Spring Web MVC" "Engagements"
             engMsgCtrl = component "MessagesController" "Mensajes por polling." "Spring Web MVC" "Engagements"
@@ -49,9 +50,18 @@ workspace extends workspace.dsl {
             notCtrl = component "NotificationsController" "Bandeja de avisos y preferencias." "Spring Web MVC" "Notifications"
             notCmd = component "NotificationCommandServiceImpl" "Crea y actualiza avisos." "Spring Service" "Notifications"
             notQuery = component "NotificationQueryServiceImpl" "Consulta avisos." "Spring Service" "Notifications"
-            notHandlers = component "Notification Event Handlers" "Eventos de Projects, Engagements, Payments y Certification." "Spring Modulith listeners" "Notifications"
+            notHandlers = component "Notification Event Handlers" "Eventos de Projects, Engagements, Payments, Certification y Assistance." "Spring Modulith listeners" "Notifications"
             notProfilesAcl = component "ExternalProfilesService (Notifications)" "ACL hacia Profiles." "Spring Component" "Notifications"
             notRepos = component "Notifications Repositories" "Persistencia del esquema notifications." "Spring Data JPA" "Notifications"
+            asiCtrl = component "AssistantController" "Borrador de proyecto y revisión de propuesta." "Spring Web MVC" "Assistance"
+            asiInsightsCtrl = component "ProposalInsightsController + ProposalFeedbackController" "Análisis y recomendaciones de propuestas." "Spring Web MVC" "Assistance"
+            asiCmd = component "AssistantCommandServiceImpl" "Cuota, puntaje de ajuste por reglas y llamadas al modelo." "Spring Service" "Assistance"
+            asiQuery = component "Assistance Query Services" "Consulta análisis y recomendaciones." "Spring Service" "Assistance"
+            asiHandlers = component "Assistance Event Handlers" "Proposal Submitted y Proposal Declined." "Spring Modulith listeners" "Assistance"
+            asiPrompts = component "PromptCatalog + PersonalDataMasker" "Plantillas de prompt versionadas y enmascarado de datos de contacto." "Spring Component" "Assistance"
+            asiProjectsAcl = component "ExternalProjectsService" "ACL hacia Projects." "Spring Component" "Assistance"
+            asiProfilesAcl = component "ExternalProfilesService (Assistance)" "ACL hacia Profiles." "Spring Component" "Assistance"
+            asiRepos = component "Assistance Repositories" "Persistencia del esquema assistance." "Spring Data JPA" "Assistance"
         }
         webApp -> iamAuthCtrl "Registra e inicia sesión" "JSON/HTTPS"
         mobileApp -> iamAuthCtrl "Registra e inicia sesión" "JSON/HTTPS"
@@ -94,7 +104,9 @@ workspace extends workspace.dsl {
         prjProfilesAcl -> profilesModule "Consulta ProfilesContextFacade" ""
         prjCmd -> prjRepos "Lee y escribe" ""
         prjQuery -> prjRepos "Lee" ""
-        prjCmd -> eventRegistry "Publica Project Published, Proposal Submitted, Proposal Accepted" ""
+        prjCmd -> eventRegistry "Publica Project Published, Proposal Submitted, Proposal Accepted, Proposal Declined" ""
+        prjFacade -> prjQuery "Envía queries" ""
+        assistanceModule -> prjFacade "Consulta proyecto y propuesta" ""
         prjRepos -> database "Lee y escribe (esquema projects)" "JDBC"
         webApp -> engCtrl "Revisa, aprueba y pide cambios" "JSON/HTTPS"
         mobileApp -> engCtrl "Registra avances y entrega" "JSON/HTTPS"
@@ -157,6 +169,26 @@ workspace extends workspace.dsl {
         notCmd -> notRepos "Lee y escribe" ""
         notQuery -> notRepos "Lee" ""
         notRepos -> database "Lee y escribe (esquema notifications)" "JDBC"
+        webApp -> asiCtrl "Pide borradores de proyecto" "JSON/HTTPS"
+        mobileApp -> asiCtrl "Pide la revisión de una propuesta" "JSON/HTTPS"
+        webApp -> asiInsightsCtrl "Consulta el análisis de propuestas (polling)" "JSON/HTTPS"
+        mobileApp -> asiInsightsCtrl "Consulta recomendaciones" "JSON/HTTPS"
+        asiCtrl -> asiCmd "Envía commands" ""
+        asiInsightsCtrl -> asiQuery "Envía queries" ""
+        eventRegistry -> asiHandlers "Entrega Proposal Submitted y Proposal Declined" ""
+        asiHandlers -> asiCmd "Envía commands" ""
+        jobsEndpoint -> asiCmd "Completa análisis pendientes" ""
+        asiCmd -> asiProjectsAcl "Obtiene proyecto y propuesta" ""
+        asiQuery -> asiProjectsAcl "Valida al dueño del proyecto" ""
+        asiProjectsAcl -> projectsModule "Consulta ProjectsContextFacade" ""
+        asiCmd -> asiProfilesAcl "Obtiene habilidades, calificación y certificados" ""
+        asiProfilesAcl -> profilesModule "Consulta ProfilesContextFacade" ""
+        asiCmd -> asiPrompts "Arma prompts sin datos personales" ""
+        asiCmd -> llmGateway "Solicita textos al modelo" ""
+        asiCmd -> asiRepos "Lee y escribe" ""
+        asiQuery -> asiRepos "Lee" ""
+        asiCmd -> eventRegistry "Publica Project Draft Generated, Proposal Insight Generated, Proposal Feedback Generated" ""
+        asiRepos -> database "Lee y escribe (esquema assistance)" "JDBC"
     }
     views {
         component api "BC-IAM" "Component Diagram 5.1 - Bounded Context IAM" {
@@ -168,8 +200,10 @@ workspace extends workspace.dsl {
             autoLayout lr
         }
         component api "BC-Projects" "Component Diagram 5.3 - Bounded Context Projects" {
-            include "element.tag==Projects" webApp mobileApp eventRegistry profilesModule database
+            include "element.tag==Projects" webApp mobileApp eventRegistry profilesModule assistanceModule database
             exclude "relationship.source==profilesModule"
+            exclude "assistanceModule -> profilesModule"
+            exclude "assistanceModule -> database"
             autoLayout lr
         }
         component api "BC-Engagements" "Component Diagram 5.4 - Bounded Context Engagements" {
@@ -192,6 +226,12 @@ workspace extends workspace.dsl {
         }
         component api "BC-Notifications" "Component Diagram 5.8 - Bounded Context Notifications" {
             include "element.tag==Notifications" webApp mobileApp eventRegistry profilesModule database
+            exclude "relationship.source==profilesModule"
+            autoLayout lr
+        }
+        component api "BC-Assistance" "Component Diagram 5.9 - Bounded Context Assistance" {
+            include "element.tag==Assistance" webApp mobileApp eventRegistry jobsEndpoint projectsModule profilesModule llmGateway claude database
+            exclude "relationship.source==projectsModule"
             exclude "relationship.source==profilesModule"
             autoLayout lr
         }

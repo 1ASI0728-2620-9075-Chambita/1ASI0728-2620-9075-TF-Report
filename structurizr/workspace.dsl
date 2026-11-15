@@ -12,7 +12,7 @@ workspace "Chambita" "Arquitectura de Chambita (Chambita Labs) - 1ASI0728 Arquit
             webApp = container "Web Application" "Permite a los clientes publicar proyectos, contratar, pagar (simulado) y calificar." "Angular, Angular Material" "Web"
             mobileApp = container "Mobile Application" "Permite a los estudiantes postular, conversar, entregar trabajos y compartir certificados." "Flutter, Dart" "Mobile"
             portal = container "Verification Portal" "Verifica certificados consultando el contrato directamente, sin pasar por el backend." "HTML, JavaScript, Ethers.js" "Web"
-            api = container "RESTful API" "Monolito modular con un módulo por bounded context: IAM, Profiles, Projects, Engagements, Payments, Reputation, Certification y Notifications." "Java 21, Spring Boot, Spring Modulith" {
+            api = container "RESTful API" "Monolito modular con un módulo por bounded context: IAM, Profiles, Projects, Engagements, Payments, Reputation, Certification, Notifications y Assistance." "Java 21, Spring Boot, Spring Modulith" {
                 security = component "Security Filter Chain" "Valida el JWT, aplica la autorización por rol y por propietario del recurso, y resuelve el idioma (Accept-Language)." "Spring Security, JWT"
                 iamModule = component "IAM Module" "Registro, inicio de sesión, verificación de estudiantes por correo institucional y emisión de tokens." "Spring Boot module"
                 profilesModule = component "Profiles Module" "Perfil profesional, portafolio y vista pública del estudiante." "Spring Boot module"
@@ -22,15 +22,17 @@ workspace "Chambita" "Arquitectura de Chambita (Chambita Labs) - 1ASI0728 Arquit
                 reputationModule = component "Reputation Module" "Calificaciones mutuas y reputación promedio." "Spring Boot module"
                 certificationModule = component "Certification Module" "Emisión, reintento y revocación de certificados; consulta de los certificados del estudiante." "Spring Boot module"
                 notificationsModule = component "Notifications Module" "Crea avisos a partir de eventos de dominio y los expone para polling." "Spring Boot module"
+                assistanceModule = component "Assistance Module" "Asistente de IA: borradores de proyecto, análisis de propuestas con puntaje de ajuste por reglas y coach de propuestas." "Spring Boot module"
                 sharedKernel = component "Shared Kernel" "Money, identificadores y clase base de eventos de dominio." "Java module"
                 eventRegistry = component "Event Publication Registry" "Persiste los eventos de dominio publicados y reintenta su entrega si el contenedor se apaga." "Spring Modulith"
                 jobsEndpoint = component "Scheduled Jobs Endpoint" "Endpoint interno protegido para las tareas diarias: aprobación automática, reintento de certificados y reenvío de eventos pendientes." "Spring Web MVC"
                 blockchainGateway = component "Blockchain Gateway" "Anti-corruption layer hacia el contrato: firma y envía transacciones con la cuenta emisora y consulta estados." "Web3j"
                 mailGateway = component "Mail Gateway" "Envía correos de verificación y de restablecimiento de contraseña." "Spring Mail"
+                llmGateway = component "LLM Gateway" "Anti-corruption layer hacia la API de Claude: arma prompts sin datos personales, valida la salida JSON y aplica la cuota y el tiempo límite." "Spring RestClient"
                 storageGateway = component "Storage Gateway" "Sube archivos y genera URLs firmadas en Supabase Storage." "Spring RestClient"
                 openApi = component "OpenAPI Documentation" "Publica la documentación interactiva de los endpoints." "springdoc-openapi"
             }
-            database = container "Database" "Guarda cuentas, perfiles, proyectos, contrataciones, pagos simulados, calificaciones, certificados y el registro de eventos." "PostgreSQL (Supabase)" "Database"
+            database = container "Database" "Guarda cuentas, perfiles, proyectos, contrataciones, pagos simulados, calificaciones, certificados, análisis del asistente y el registro de eventos." "PostgreSQL (Supabase)" "Database"
             storage = container "File Storage" "Guarda imágenes del portafolio y archivos de entregas." "Supabase Storage" "Database"
             contract = container "Certificate Smart Contract" "Emite, revoca y verifica certificados no transferibles con la huella y un identificador seudónimo." "Solidity, ERC-721 (EIP-5192), OpenZeppelin" "Blockchain"
         }
@@ -39,6 +41,7 @@ workspace "Chambita" "Arquitectura de Chambita (Chambita Labs) - 1ASI0728 Arquit
         smtp = softwareSystem "Servicio de correo (SMTP)" "Envía códigos de verificación y enlaces para restablecer la contraseña." "External"
         drive = softwareSystem "Google Drive" "Aloja el APK de la aplicación móvil para su descarga." "External"
         etherscan = softwareSystem "Etherscan" "Explorador público de la red Sepolia." "External"
+        claude = softwareSystem "API de Claude (Anthropic)" "Modelo de lenguaje (Claude Haiku) del asistente de IA." "External"
         vercelCron = softwareSystem "Vercel Cron" "Programador de tareas de Vercel; invoca la API una vez al día." "External"
 
         visitor -> landing "Conoce la propuesta de valor"
@@ -60,6 +63,7 @@ workspace "Chambita" "Arquitectura de Chambita (Chambita Labs) - 1ASI0728 Arquit
         api -> smtp "Envía correos" "SMTP"
         api -> alchemy "Emite y revoca certificados" "Web3j, JSON-RPC/HTTPS"
         portal -> alchemy "Consulta el estado de los certificados" "Ethers.js, JSON-RPC/HTTPS"
+        api -> claude "Genera borradores, resúmenes y recomendaciones" "JSON/HTTPS"
         alchemy -> contract "Propaga transacciones y consultas" "Ethereum Sepolia"
         etherscan -> contract "Indexa el contrato y sus transacciones"
 
@@ -73,6 +77,7 @@ workspace "Chambita" "Arquitectura de Chambita (Chambita Labs) - 1ASI0728 Arquit
         security -> reputationModule "Delega solicitudes autenticadas"
         security -> certificationModule "Delega solicitudes autenticadas"
         security -> notificationsModule "Delega solicitudes autenticadas"
+        security -> assistanceModule "Delega solicitudes autenticadas"
         iamModule -> database "Lee y escribe cuentas" "Spring Data JPA"
         profilesModule -> database "Lee y escribe perfiles" "Spring Data JPA"
         projectsModule -> database "Lee y escribe proyectos y propuestas" "Spring Data JPA"
@@ -81,6 +86,7 @@ workspace "Chambita" "Arquitectura de Chambita (Chambita Labs) - 1ASI0728 Arquit
         reputationModule -> database "Lee y escribe calificaciones" "Spring Data JPA"
         certificationModule -> database "Lee y escribe certificados" "Spring Data JPA"
         notificationsModule -> database "Lee y escribe avisos" "Spring Data JPA"
+        assistanceModule -> database "Lee y escribe análisis y uso del asistente" "Spring Data JPA"
         eventRegistry -> database "Guarda los eventos publicados" "JDBC"
         iamModule -> profilesModule "Student Verified" "Evento de dominio" "DomainEvent"
         projectsModule -> profilesModule "Consulta verificación y categorías" "API interna del módulo" "Internal"
@@ -95,6 +101,10 @@ workspace "Chambita" "Arquitectura de Chambita (Chambita Labs) - 1ASI0728 Arquit
         engagementsModule -> notificationsModule "Eventos de la contratación" "Evento de dominio" "DomainEvent"
         paymentsModule -> notificationsModule "Eventos de pago" "Evento de dominio" "DomainEvent"
         certificationModule -> notificationsModule "Eventos de certificados" "Evento de dominio" "DomainEvent"
+        projectsModule -> assistanceModule "Proposal Submitted, Proposal Declined" "Evento de dominio" "DomainEvent"
+        assistanceModule -> notificationsModule "Proposal Feedback Generated" "Evento de dominio" "DomainEvent"
+        assistanceModule -> projectsModule "Consulta proyecto y propuesta" "API interna del módulo" "Internal"
+        assistanceModule -> profilesModule "Consulta habilidades, calificación y certificados" "API interna del módulo" "Internal"
         projectsModule -> sharedKernel "Usa tipos comunes" "" "Internal"
         engagementsModule -> sharedKernel "Usa tipos comunes" "" "Internal"
         paymentsModule -> sharedKernel "Usa tipos comunes" "" "Internal"
@@ -105,10 +115,13 @@ workspace "Chambita" "Arquitectura de Chambita (Chambita Labs) - 1ASI0728 Arquit
         profilesModule -> storageGateway "Guarda imágenes del portafolio"
         engagementsModule -> storageGateway "Guarda archivos de entregas"
         storageGateway -> storage "Sube y lee archivos" "HTTPS"
+        assistanceModule -> llmGateway "Solicita textos al modelo"
+        llmGateway -> claude "Envía prompts sin datos personales" "JSON/HTTPS"
         vercelCron -> jobsEndpoint "Invoca las tareas diarias" "HTTPS"
         jobsEndpoint -> engagementsModule "Aprueba entregas vencidas"
         jobsEndpoint -> certificationModule "Reintenta certificados pendientes"
         jobsEndpoint -> eventRegistry "Reenvía eventos incompletos"
+        jobsEndpoint -> assistanceModule "Completa análisis pendientes"
         security -> openApi "Expone la documentación sin autenticación"
 
         production = deploymentEnvironment "Production" {
@@ -139,6 +152,9 @@ workspace "Chambita" "Arquitectura de Chambita (Chambita Labs) - 1ASI0728 Arquit
             deploymentNode "Alchemy" "Infraestructura RPC" "Alchemy" {
                 softwareSystemInstance alchemy
             }
+            deploymentNode "Anthropic" "API de modelos de lenguaje" "Anthropic API" {
+                softwareSystemInstance claude
+            }
             deploymentNode "Celular del estudiante" "" "Android (APK)" {
                 containerInstance mobileApp
             }
@@ -165,17 +181,17 @@ workspace "Chambita" "Arquitectura de Chambita (Chambita Labs) - 1ASI0728 Arquit
             autoLayout lr
         }
         component api "Components-Requests" "Component Diagram (1/3) - Entrada de solicitudes a la RESTful API" {
-            include webApp mobileApp security openApi iamModule profilesModule projectsModule engagementsModule paymentsModule reputationModule certificationModule notificationsModule
+            include webApp mobileApp security openApi iamModule profilesModule projectsModule engagementsModule paymentsModule reputationModule certificationModule notificationsModule assistanceModule
             exclude "relationship.tag==DomainEvent"
             exclude "relationship.tag==Internal"
             autoLayout lr
         }
         component api "Components-Events" "Component Diagram (2/3) - Módulos y eventos de dominio" {
-            include iamModule profilesModule projectsModule engagementsModule paymentsModule reputationModule certificationModule notificationsModule sharedKernel
+            include iamModule profilesModule projectsModule engagementsModule paymentsModule reputationModule certificationModule notificationsModule assistanceModule sharedKernel
             autoLayout lr
         }
         component api "Components-Integrations" "Component Diagram (3/3) - Persistencia e integraciones" {
-            include iamModule profilesModule projectsModule engagementsModule paymentsModule reputationModule certificationModule notificationsModule eventRegistry jobsEndpoint blockchainGateway mailGateway storageGateway database storage alchemy smtp vercelCron
+            include iamModule profilesModule projectsModule engagementsModule paymentsModule reputationModule certificationModule notificationsModule assistanceModule eventRegistry jobsEndpoint blockchainGateway mailGateway storageGateway llmGateway database storage alchemy smtp claude vercelCron
             exclude "relationship.tag==DomainEvent"
             exclude "relationship.tag==Internal"
             autoLayout lr
